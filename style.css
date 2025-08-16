@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+
+.hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:hotpink;
+    text-shadow: 2px 2px #006aff;
+    font-size: x-large;
+}
