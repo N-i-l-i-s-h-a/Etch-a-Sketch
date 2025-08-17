@@ -1,10 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
-
-.hero{
+*{
+    background-color: blanchedalmond;
+}
+.heading{
+    color:hotpink;
+    text-shadow: 3px 3px #006aff;
+    font-size: 45px;
+    font-weight: 900;
     display: flex;
     justify-content: center;
     align-items: center;
-    color:hotpink;
-    text-shadow: 2px 2px #006aff;
-    font-size: x-large;
+}
+.hero{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    gap: 32px;
+    margin-left: 100px;
+}
+input, button{
+  width: 80px;
+  height: 80px;
+  padding: 0px;
+  border: 0px;
+  background-color: transparent;
+  cursor: pointer;
+}
+input[type="color"]::-webkit-color-swatch {
+    border-radius: 50%;
+}
+img{
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+}
+.Rainbow, .Eraser, .Clear{
+    flex: 0 1 1;
+    width: 80px;
+}
+.Eraser{
+    background-color: #c1f4da;
+    border-radius: 50%;
+}
+.Clear{
+    background-color: #ffa3a3;
+    border-radius: 50%;
+}
+.Clear>img{
+    width: 65px;
+    height: 65px;
 }
