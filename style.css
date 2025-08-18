@@ -87,13 +87,6 @@ img{
     background-color: transparent;
     border: 1px solid rgba(0, 0, 0, 0.701);
 }
-.smallGrid{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.701);
-}
 .slider{
     display: flex;
     flex-direction: column;

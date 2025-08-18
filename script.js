@@ -10,18 +10,17 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 function createGrid(){
-    const range = document.querySelector("#slider");
-    const num = range.value;
+    const range = document.querySelector("#slide");
     const bigGrid = document.querySelector(".grid");
+    const slider = document.querySelector(".size");
+    const num = range.value;
     const squares = num * num;
     const dim = 496 / num;
-    const slider = document.querySelector(".size");
+    bigGrid.innerText = "";
     slider.innerText = `${num} x ${num}`;
     for(let i = 1; i <= squares; i++){
         const smallGrid = document.createElement("div");
-        small.style.width = `${dim}px`;
-        small.style.height = `${dim}px`;
-        smallGrid.classList.add("smallGrid");
+        smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px; box-sizing: border-box; padding: 0; margin: 0; background-color: transparent; border: 1px solid rgba(0, 0, 0, 0.701);`;
         bigGrid.appendChild(smallGrid);
     }
 }
