@@ -65,7 +65,7 @@ img{
     background-image: url(assets/rainbow-flag.png);
     background-size: cover;
 }
-.grid{
+.canvas{
     display: flex;
     justify-content: center;
     align-items: center;
