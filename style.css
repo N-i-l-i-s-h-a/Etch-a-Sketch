@@ -11,6 +11,7 @@
     justify-content: center;
     align-items: center;
     margin: 0px;
+    margin-left: 20px;
 }
 .hero{
     display: flex;
@@ -65,12 +66,33 @@ img{
     background-size: cover;
 }
 .grid{
-    height: 428px;
-    width: 560px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 496px;
+    width: 496px;
     margin: 0;
     border: 1px solid black;
     box-shadow: 15px 15px #000000b4;
     background-color: azure;
+    padding: 0;
+}
+.small16{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    width: 31px;
+    height: 31px;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.701);
+}
+.smallGrid{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.701);
 }
 .slider{
     display: flex;
