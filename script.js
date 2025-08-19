@@ -15,10 +15,11 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 });
 
+//global state that determines when the mouseenter event triggers coloring
+let isDrawing = false;
+
 //when input[type = range] is changed, the squares inside canvas change and the changed size is displayed
 function createGrid(){
-    const colorIn = document.querySelector("#col");
-    let colorCh = colorIn.value;
     const range = document.querySelector("#slide");
     const bigGrid = document.querySelector(".canvas");
     const slider = document.querySelector(".size");
@@ -31,14 +32,33 @@ function createGrid(){
         const smallGrid = document.createElement("div");
         smallGrid.classList.add("small");
         smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
-        smallGrid.addEventListener('click', function(){
-            smallGrid.classList.add("small");
-            smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px; background-color : ${colorCh}`
-        });
-        smallGrid.addEventListener('dblclick', function(){
-            const nodeList = document.querySelectorAll(".small");
-            nodeList.forEach(node => {  node.addEventListener('mouseenter', () => node.style.cssText = `width: ${dim}px; height: ${dim}px; background-color: ${colorCh}`)   });
-        });
         bigGrid.appendChild(smallGrid);
     }
+    return draw(dim);
+}
+
+//draw function that colors small grids either when the mousedown event occurs or when the mousedown event has occurred once and 
+function draw(dim){
+    const colorIn = document.querySelector("#col");
+    let colorCh = colorIn.value;
+    const bigGrid = document.querySelector(".canvas");
+    bigGrid.addEventListener('mousedown', () => isDrawing = true);
+    bigGrid.addEventListener('mouseup', () => isDrawing = false);
+    const smallGrids = document.querySelectorAll(".small");
+    smallGrids.forEach(smallGrid => 
+        {   
+            smallGrid.addEventListener('mouseenter', function(){
+                if(isDrawing){
+                    smallGrid.classList.add("small");
+                    smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
+                    smallGrid.style.backgroundColor =  `${colorCh}`;
+            }});
+            smallGrid.addEventListener('mousedown', function(){
+                smallGrid.classList.add("small");
+                smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
+                smallGrid.style.backgroundColor =  `${colorCh}`;
+            });
+        }            
+    );
+        
 }
