@@ -1,18 +1,13 @@
 //when the complete DOM is loaded, event listener places 16*16 smaller grids inside the bigger grid
 document.addEventListener("DOMContentLoaded", function(){
-    const colorIn = document.querySelector("#col");
-    let colorCh = colorIn.value;
     const bigGrid = document.querySelector(".canvas");
     const squares = 16 * 16;
     for(let i = 1; i <= squares; i++){
         const smallGrid = document.createElement("div");
         smallGrid.classList.add("small");
-        smallGrid.addEventListener('click', function(){
-            smallGrid.style.cssText = `background-color : ${colorCh}`
-            smallGrid.addEventListener('mousedown', hoverFill());
-        });
         bigGrid.appendChild(smallGrid);
     }
+    return draw(31);
 });
 
 //global state that determines when the mouseenter event triggers coloring
@@ -37,10 +32,11 @@ function createGrid(){
     return draw(dim);
 }
 
-//draw function that colors small grids either when the mousedown event occurs or when the mousedown event has occurred once and 
+//draw function that colors small grids either when the mousedown event occurs or when the mouse hovers over the small grids after some grid was dblclicked somewhere 
 function draw(dim){
     const colorIn = document.querySelector("#col");
     let colorCh = colorIn.value;
+    colorIn.addEventListener('change', (e) => colorCh = e.target.value);
     const bigGrid = document.querySelector(".canvas");
     bigGrid.addEventListener('mousedown', () => isDrawing = true);
     bigGrid.addEventListener('mouseup', () => isDrawing = false);
@@ -59,6 +55,5 @@ function draw(dim){
                 smallGrid.style.backgroundColor =  `${colorCh}`;
             });
         }            
-    );
-        
+    );       
 }
