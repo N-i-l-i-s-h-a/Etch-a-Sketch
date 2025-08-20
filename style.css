@@ -39,9 +39,15 @@ input[type="color"]::-webkit-color-swatch {
     border: 1px solid black;
 }
 img{
-    width: 70px;
-    height: 70px;
+    width: 55px;
+    height: 55px;
     background-color: transparent;
+}
+.Eraser>img{
+    filter: drop-shadow(7px 7px rgba(9, 186, 94, 0.507));
+}
+.Clear>img{
+    filter: drop-shadow(5px 5px rgba(83, 19, 19, 0.537));
 }
 .Rainbow, .Eraser, .Clear{
     width: 80px;
@@ -53,17 +59,16 @@ img{
     background-repeat: no-repeat;
     background-position: center;
 }
-.Eraser{
-    background-image: url(assets/eraser.png);
-    background-color: #c1f4da;
-}
-.Clear{
-    background-image: url(assets/undo.png);
-    background-color: #ffa3a3;
-}
+
 .Rainbow{
     background-image: url(assets/rainbow-flag.png);
     background-size: cover;
+}
+.Clear{
+    background-color: rgb(255, 116, 116);
+}
+.Eraser{
+    background-color: #c1f4da;
 }
 .canvas{
     display: flex;
@@ -75,7 +80,7 @@ img{
     margin: 0;
     border: 1px solid black;
     box-shadow: 15px 15px #000000b4;
-    background-color: azure;
+    background-color: #f0ffff;
     padding: 0;
 }
 .small{
@@ -85,7 +90,7 @@ img{
     width: 31px;
     height: 31px;
     background-color: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.701);
+    border: 1px solid rgba(0, 0, 0, 0.308);
     flex: auto auto 1;
 }
 .slider{

@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
     <link rel = "stylesheet" href = "style.css">
-    <script src = "script.js"></script>
+    <script src = "script.js" defer></script>
 </head>
 <body>
     <p class="heading">Etch-a-Sketch</p>
     <div class = "hero">
         <div class = "options">
-            <input id = "col" type = "color" value = "#ff69b4">
+            <input id = "col" type = "color" value = "#448df3">
             <button class = "Rainbow"></button>
-            <button class = "Eraser"></button>
-            <button class = "Clear"></button>
+            <button class = "Eraser" onclick = "eraser()"><img src = "assets/eraser.png"></button>
+            <button class = "Clear" onclick = "createGrid()"><img src = "assets/reset.png"></button>
         </div>
         <div class = "canvas">
         </div>
