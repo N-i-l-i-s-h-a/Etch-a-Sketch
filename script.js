@@ -61,7 +61,6 @@ function draw(dim){
                 smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
                 smallGrid.style.backgroundColor =  `${colorCh}`;
             });
-            smallGrid.addEventListener('touchend', () => isDrawing = false);
         }            
     );       
 }
@@ -94,7 +93,6 @@ function randomColor(){
                 smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
                 smallGrid.style.backgroundColor =  `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
             });
-            smallGrid.addEventListener('touchend', () => isDrawing = false);
         }            
     ); 
     const colorIn = document.querySelector("#col");
@@ -138,7 +136,6 @@ function eraser(){
                 smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
                 smallGrid.style.backgroundColor =  `${bgcol}`;
             });
-            smallGrid.addEventListener('touchend', () => isErasing = false);
         }            
     ); 
     const colorIn = document.querySelector("#col");
