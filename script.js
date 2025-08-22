@@ -45,8 +45,8 @@ function draw(dim){
     colorIn.addEventListener('change', (e) => colorCh = e.target.value);
     const bigGrid = document.querySelector(".canvas");
     bigGrid.addEventListener('mousedown', () => isDrawing = true);
+    bigGrid.addEventListener('mouseup', () => isDrawing = false);
     bigGrid.addEventListener('mouseleave', () => isDrawing = false);
-    document.addEventListener('touchend', () => isDrawing = false);
     const smallGrids = document.querySelectorAll(".small"); 
     smallGrids.forEach(smallGrid => 
         {   
@@ -56,11 +56,12 @@ function draw(dim){
                     smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
                     smallGrid.style.backgroundColor =  `${colorCh}`;
             }});
-            smallGrid.addEventListener('mousedown', function(){
+            smallGrid.addEventListener('click', function(){
                 smallGrid.classList.add("small");
                 smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
                 smallGrid.style.backgroundColor =  `${colorCh}`;
             });
+            smallGrid.addEventListener('touchend', () => isDrawing = false);
         }            
     );       
 }
@@ -78,8 +79,7 @@ function randomColor(){
     rnb.classList.add("selected");
     const bigGrid = document.querySelector(".canvas");
     bigGrid.addEventListener('mousedown', () => isDrawing = true);
-    bigGrid.addEventListener('mouseleave', () => isDrawing = false);
-    bigGrid.addEventListener('touchend', () => isDrawing = false);
+    bigGrid.addEventListener('mouseup', () => isDrawing = false);
     const smallGrids = document.querySelectorAll(".small"); 
     smallGrids.forEach(smallGrid => 
         {   
@@ -89,11 +89,12 @@ function randomColor(){
                     smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
                     smallGrid.style.backgroundColor =  `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
             }});
-            smallGrid.addEventListener('mousedown', function(){
+            smallGrid.addEventListener('click', function(){
                 smallGrid.classList.add("small");
                 smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
                 smallGrid.style.backgroundColor =  `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
             });
+            smallGrid.addEventListener('touchend', () => isDrawing = false);
         }            
     ); 
     const colorIn = document.querySelector("#col");
@@ -122,8 +123,7 @@ function eraser(){
     const bigGrid = document.querySelector(".canvas");
     let bgcol = bigGrid.style.backgroundColor;
     bigGrid.addEventListener('mousedown', () => isErasing = true);
-    bigGrid.addEventListener('mouseleave', () => isErasing = false);
-    bigGrid.addEventListener('touchend', () => isErasing = false);
+    bigGrid.addEventListener('mouseup', () => isErasing = false);
     const smallGrids = document.querySelectorAll(".small"); 
     smallGrids.forEach(smallGrid => 
         {   
@@ -133,11 +133,12 @@ function eraser(){
                     smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
                     smallGrid.style.backgroundColor =  `${bgcol}`;
             }});
-            smallGrid.addEventListener('mousedown', function(){
+            smallGrid.addEventListener('click', function(){
                 smallGrid.classList.add("small");
                 smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
                 smallGrid.style.backgroundColor =  `${bgcol}`;
             });
+            smallGrid.addEventListener('touchend', () => isErasing = false);
         }            
     ); 
     const colorIn = document.querySelector("#col");
