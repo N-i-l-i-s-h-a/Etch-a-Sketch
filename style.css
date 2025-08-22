@@ -70,6 +70,13 @@ img{
 .Eraser{
     background-color: #c1f4da;
 }
+.Rainbow:hover, .Eraser:hover, .Clear:hover{
+    box-shadow: 6px 6px rgb(188, 159, 116);
+    cursor: pointer;
+}
+.selected{
+    box-shadow: 6px 6px rgb(188, 159, 116);
+}
 .canvas{
     display: flex;
     justify-content: center;

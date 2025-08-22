@@ -18,6 +18,8 @@ let isDrawing = false;
 
 //when input[type = range] is changed, the squares inside canvas change and the changed size is displayed
 function createGrid(){
+    isErasing = false;
+    isDrawing = false;
     const range = document.querySelector("#slide");
     const bigGrid = document.querySelector(".canvas");
     const slider = document.querySelector(".size");
@@ -37,13 +39,14 @@ function createGrid(){
 
 //draw function that colors small grids either when the mousedown event occurs or when the mouse hovers over the small grids after some grid was dblclicked somewhere 
 function draw(dim){
+    isErasing = false;
     const colorIn = document.querySelector("#col");
     let colorCh = colorIn.value;   
     colorIn.addEventListener('change', (e) => colorCh = e.target.value);
     const bigGrid = document.querySelector(".canvas");
     bigGrid.addEventListener('mousedown', () => isDrawing = true);
     bigGrid.addEventListener('mouseleave', () => isDrawing = false);
-    document.addEventListener('mouseup', () => isDrawing = false);
+    document.addEventListener('touchend', () => isDrawing = false);
     const smallGrids = document.querySelectorAll(".small"); 
     smallGrids.forEach(smallGrid => 
         {   
@@ -62,15 +65,65 @@ function draw(dim){
     );       
 }
 
+//in order to generate a random number between 0 to 255
+function randomNum(){
+    return Math.floor(Math.random() * 1000) % 400;
+}
 
+//this is called after the rainbow btn is clicked, it is similar to draw() but its value of selected color keeps changing
+function randomColor(){
+    const sq = (document.querySelector("#slide")).value;
+    const dim = 496 / sq;
+    const rnb = document.querySelector(".Rainbow");
+    rnb.classList.add("selected");
+    const bigGrid = document.querySelector(".canvas");
+    bigGrid.addEventListener('mousedown', () => isDrawing = true);
+    bigGrid.addEventListener('mouseleave', () => isDrawing = false);
+    bigGrid.addEventListener('touchend', () => isDrawing = false);
+    const smallGrids = document.querySelectorAll(".small"); 
+    smallGrids.forEach(smallGrid => 
+        {   
+            smallGrid.addEventListener('mouseenter', function(){
+                if(isDrawing){
+                    smallGrid.classList.add("small");
+                    smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
+                    smallGrid.style.backgroundColor =  `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
+            }});
+            smallGrid.addEventListener('mousedown', function(){
+                smallGrid.classList.add("small");
+                smallGrid.style.cssText = `width: ${dim}px; height: ${dim}px;`
+                smallGrid.style.backgroundColor =  `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
+            });
+        }            
+    ); 
+    const colorIn = document.querySelector("#col");
+    colorIn.addEventListener('click', function(){
+        isDrawing = false;
+        draw(dim);
+        rnb.classList.remove("selected");
+    });
+    const rst = document.querySelector(".Clear");
+    rst.addEventListener('click', function(){
+        rnb.classList.remove("selected");
+    });
+    const ers = document.querySelector(".Eraser");
+    ers.addEventListener('click', function(){
+        rnb.classList.remove("selected");
+    });
+}
+
+//this function is triggered after the eraser button is clicked, it is similar to draw() but it uses a different state variable(isDrawing)
 function eraser(){
+    isDrawing = false;
+    const ers = document.querySelector(".Eraser");
+    ers.classList.add("selected");
     const sq = (document.querySelector("#slide")).value;
     const dim = 496 / sq;
     const bigGrid = document.querySelector(".canvas");
     let bgcol = bigGrid.style.backgroundColor;
     bigGrid.addEventListener('mousedown', () => isErasing = true);
     bigGrid.addEventListener('mouseleave', () => isErasing = false);
-    bigGrid.addEventListener('mouseup', () => isErasing = false);
+    bigGrid.addEventListener('touchend', () => isErasing = false);
     const smallGrids = document.querySelectorAll(".small"); 
     smallGrids.forEach(smallGrid => 
         {   
@@ -89,7 +142,15 @@ function eraser(){
     ); 
     const colorIn = document.querySelector("#col");
     colorIn.addEventListener('click', function(){
-        isErasing = false;
+        ers.classList.remove("selected");
         draw(dim);
+    });
+    const rst = document.querySelector(".Clear");
+    rst.addEventListener('click', function(){
+        ers.classList.remove("selected");
+    });
+    const rnb = document.querySelector(".Rainbow");
+    rnb.addEventListener('click', function(){
+        ers.classList.remove("selected");
     });
 }
