@@ -122,6 +122,7 @@ function eraser(){
     let bgcol = bigGrid.style.backgroundColor;
     bigGrid.addEventListener('mousedown', () => isErasing = true);
     bigGrid.addEventListener('mouseup', () => isErasing = false);
+    bigGrid.addEventListener('mouseleave', () => isErasing = false);
     const smallGrids = document.querySelectorAll(".small"); 
     smallGrids.forEach(smallGrid => 
         {   
