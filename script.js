@@ -67,7 +67,7 @@ function draw(dim){
 
 //in order to generate a random number between 0 to 255
 function randomNum(){
-    return Math.floor(Math.random() * 1000) % 400;
+    return Math.floor(Math.random() * 1000) % 650;
 }
 
 //this is called after the rainbow btn is clicked, it is similar to draw() but its value of selected color keeps changing
